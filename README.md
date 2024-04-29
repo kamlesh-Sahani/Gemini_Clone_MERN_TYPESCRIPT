@@ -48,15 +48,15 @@ In the frontend, the following environment variables are used:
 
 To run this project locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/gemini-clone.git`
-2. Navigate to the project directory: `cd gemini-clone`
+1. Clone the repository: `https://github.com/kamlesh-Sahani/Gemini_Clone_MERN_TYPESCRIPT.git`
+2. Navigate to the project directory: `cd Gemini_Clone_MERN_TYPESCRIPT`
 3. Install dependencies:
    - Backend: `cd backend && npm install`
    - Frontend: `cd frontend && npm install`
 4. Set up environment variables:
    - Create a `.env` file in the root of the backend directory.
    - Add your environment variables to the `.env` file (refer to the provided variables above).
-5. Start the backend server: `npm start` or `npm run dev` for development mode.
+5. Start the backend server: `nodemon dist/app.js`  for development mode.
 6. Start the frontend development server: `npm start` in the frontend directory.
 
 ## Contributing
