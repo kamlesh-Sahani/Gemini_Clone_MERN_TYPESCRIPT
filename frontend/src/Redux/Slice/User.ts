@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { server } from "../Strore";
+const server="https://gemini-clone-backend-dilh.onrender.com";
 export type userType = {
   id: string;
   email: string;

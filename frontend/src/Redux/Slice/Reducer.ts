@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import runChat from "../../config/gemini";
-import { server } from "../Strore";
+const server="https://gemini-clone-backend-dilh.onrender.com";
 export interface fetchGeminiResultArgs {
   prompt: string;
 }
