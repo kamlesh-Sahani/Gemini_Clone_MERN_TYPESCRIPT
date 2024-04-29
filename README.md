@@ -1,4 +1,3 @@
-Here's a template for your README file for the Gemini clone project using the MERN stack:
 
 ---
 
@@ -16,7 +15,6 @@ You can access the live demo of this project at [Live Demo](https://your-live-de
 - **Backend**: Node.js with Express.js for API endpoints.
 - **Database**: MongoDB for data storage.
 - **Authentication**: Firebase authentication.
-- **Deployment**: Hosted on [Heroku](https://www.heroku.com/) for backend and [Netlify](https://www.netlify.com/) for frontend.
 
 ## Environment Variables
 
@@ -31,6 +29,20 @@ In the frontend, the following environment variables are used:
 - `VITE_FIREBASE_MESSAGING`: Firebase messaging sender ID.
 - `VITE_FIREBASE_APP_ID`: Firebase app ID.
 - `VITE_DATABASE_URL`: MongoDB database connection URL.
+
+## Backend APIs
+
+### Result Routes
+
+- `POST /api-v1/result/new`: Sets data.
+- `GET /api-v1/result/all/:user`: Gets all data for a specific user.
+- `GET /api-v1/result/:id`: Gets a single data entry by ID.
+
+### User Routes
+
+- `POST /api-v1/user/new`: Creates a new user.
+- `POST /api-v1/user/login`: Logs in a user.
+- `POST /api-v1/user/isuser`: Checks if a user exists.
 
 ## Getting Started
 
@@ -57,4 +69,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Replace placeholders like `your-live-demo-url.com`, `your-username`, and add any additional information specific to your project. Also, make sure to include the actual URLs for the live demo and license file.
+Feel free to adjust the descriptions of your APIs or add more details as needed.
