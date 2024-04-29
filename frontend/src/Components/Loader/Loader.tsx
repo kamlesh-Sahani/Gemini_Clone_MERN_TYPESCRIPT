@@ -7,7 +7,7 @@ const Loader = () => {
     <div className="loader">
         {
             arr.map((v,i)=>(
-                <div className="loader_div" key={i}></div>
+                <div className="loader_div" key={i+v}></div>
             ))
         }
     

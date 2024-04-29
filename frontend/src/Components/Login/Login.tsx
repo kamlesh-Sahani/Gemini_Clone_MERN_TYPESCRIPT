@@ -35,8 +35,8 @@ const Login = () => {
           uid: user.uid!,
         };
 
-      const userResponse = await dispatch(fetchSingleUser({ uid: user.uid }));
-      if (userResponse.payload.success) {
+      const userResponse:any = await dispatch(fetchSingleUser({ uid: user.uid })); 
+      if (userResponse?.payload?.success) {
         await dispatch(fetchLoginUser({ email: user.email!, uid: user.uid! }));
       } else {
         await dispatch(fetchUser(data));

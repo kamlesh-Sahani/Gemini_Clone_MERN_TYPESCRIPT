@@ -7,13 +7,10 @@ import {
   fetchGeminiResult,
   getResult,
   getSingleData,
-  storeResult,
 } from "../../Redux/Slice/Reducer";
 import { AppDispatch, RootType } from "../../Redux/Strore";
 import Loader from "../Loader/Loader";
 import { useNavigate } from "react-router-dom";
-import { fetchSingleUser } from "../../Redux/Slice/User";
-
 const Main = () => {
   const [prompt, setPrompt] = useState<string>("");
   const [hideBtn, setHideBtn] = useState<boolean>(false);

@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
 export type userType = {
   id: string;
@@ -8,8 +8,8 @@ export type userType = {
   name: string;
 };
 export type apiResponse = {
-  message?: string;
-  user?: userType|undefined;
+  message: string;
+  user: userType|undefined;
   success: boolean;
   };
 
@@ -127,7 +127,7 @@ const fetchUserSlice = createSlice({
       state.user = undefined;
       state.error = undefined;
     }),
-      builder.addCase(fetchLoginUser.fulfilled, (state, action) => {
+      builder.addCase(fetchLoginUser.fulfilled, (state, action:PayloadAction<apiResponse>) => {
         state.loading = false;
         state.user = action.payload.user;
         state.error = undefined;
