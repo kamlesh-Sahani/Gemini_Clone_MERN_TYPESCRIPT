@@ -1,0 +1,121 @@
+.login {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10vh;
+  flex-direction: column;
+
+
+  .titleAndICon{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+
+    img{
+        height: 100px;
+        object-fit: cover;
+        width: 100px;
+        border-radius: 100%;
+    }
+ 
+  }
+
+  form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      p {
+        font-weight: 500;
+      }
+
+      input {
+        width: 400px;
+        height: 40px;
+        border-radius: 6px;
+        border: none;
+        outline: none;
+        padding-left: 20px;
+        cursor: pointer;
+        background-color: #f5f5f5;
+      }
+    }
+
+    input[type="submit"],
+    .googleBtn,.guest {
+      width: 400px;
+      height: 40px;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+      padding-left: 20px;
+      cursor: pointer;
+      background-color: #7252ef;
+      color: #fff;
+      box-shadow: 2px 1px 7px #b3b3b3b4;
+    }
+
+    .googleBtn {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      color: #7252ef;
+      box-shadow: 2px 1px 7px #b3b3b3b4;
+      margin-top: 50px;
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+      p {
+        font-weight: 500;
+        font-size: 18px;
+      }
+    }
+
+    .guest{
+      background-color: #000;
+      color: #fff;  
+      font-size: 20px;
+    }
+
+    a{
+   
+      font-weight: 500;
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    form {
+      width: 100%;
+      align-items: center;
+      label {
+        align-items: center;
+        width: 100%;
+
+        p {
+          margin-left: 20px;
+          align-self: flex-start;
+        }
+        input {
+          width: 90%;
+        }
+      }
+      input[type="submit"] {
+        width: 90%;
+      }
+      .googleBtn,.guest {
+        width: 90%;
+      }
+    }
+  }
+}

@@ -1,0 +1,170 @@
+.slider {
+  display: grid;
+  grid-template-rows: 0.5fr 2.3fr 1.5fr;
+  gap: 20px;
+  background-color: #f0f4f9;
+  height: 100vh;
+  padding: 20px 20px 0px 20px;
+
+  .slider_head {
+    display: flex;
+    flex-direction: column;
+    gap: 90px;
+    svg {
+      font-size: 27px;
+      cursor: pointer;
+      transition: all 0.4;
+      &:hover {
+        color: #8a8a8a;
+        transition: all 0.4;
+      }
+    }
+
+    button {
+      height: 50px;
+      width: 150px;
+      border-radius: 50px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      align-items: center;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      background-color: #e5ebf2;
+      color: #a5a5a5;
+      span {
+        font-size: 17px;
+      }
+      transition: all 0.4;
+      &:hover {
+        opacity: 0.7;
+        transition: all 0.4;
+      }
+    }
+    @media screen and (max-width:500px) {
+      svg{
+        display: none;
+      }
+    }
+
+  }
+
+  .slider_tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    p {
+      font-weight: 500;
+    }
+    .tasks {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 10px;
+
+      a {
+        text-decoration: none;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        width: 100%;
+        padding: 10px 20px;
+        border-radius: 20px;
+        transition: all 0.4s;
+
+        svg {
+          color: #353535;
+          font-size: 20px;
+        }
+        span {
+          color: #4b4b4b;
+        }
+
+        .hide {
+          display: none;
+        }
+
+        &:hover {
+          background-color: #e0e0e0;
+          justify-content: space-between;
+          transition: all 0.4s;
+          .hide {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  .slider_bottom ,.sliderActive{
+    display: flex;
+    flex-direction: column;
+    ul {
+      li {
+        width: 100%;
+        border-radius: 20px;
+        display: flex;
+        gap: 20px;
+        list-style: none;
+        cursor: pointer;
+        width: 100%;
+        padding: 10px 20px;
+        transition: all 0.4s;
+        &:hover {
+          background-color: #e0e0e0;
+          transition: all 0.4s;
+        }
+
+        svg {
+          color: #353535;
+          font-size: 20px;
+        }
+      }
+    }
+
+    
+
+
+    button{
+        border-radius: 7px;
+        height: 40px;
+        background-color: #e0e0e0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        border: none;
+        cursor: pointer;
+
+        &:hover{
+        opacity: 0.5;
+        transition: all 0.4s;
+        }
+        svg{
+      color: #CC5F75;
+        }
+        
+
+        
+    }
+    .para{
+        margin-top: 20px;
+    }
+    .active{
+        margin-top:8px ;
+        color: #001ec7ee;
+        cursor: pointer;
+    }
+  }
+  .sliderActive{
+    position: absolute;
+    bottom: 20px;
+    ul{
+      li{
+        width: auto;
+      }
+    }
+  }
+}

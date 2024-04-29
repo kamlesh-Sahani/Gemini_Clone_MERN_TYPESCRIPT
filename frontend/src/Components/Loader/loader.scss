@@ -1,0 +1,24 @@
+.loader {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .loader_div {
+    height: 40px;
+    width: 60vw;
+    border-radius: 7px;
+    background-color: #eee;
+    background: linear-gradient(to right, #9ed7ff, #fff, #9ed7ff);
+    animation: loadAnime 3s infinite linear;
+  }
+
+  @keyframes loadAnime {
+    0% {
+      background-position: -800px 0px;
+    }
+
+    100% {
+      background-position: 800px 0;
+    }
+  }
+}
