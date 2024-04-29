@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-
+import { server } from "../Strore";
 export type userType = {
   id: string;
   email: string;
@@ -18,7 +18,7 @@ export const fetchUser = createAsyncThunk<
   apiResponse,
   { name: string; email: string; photo: string; uid: string }
 >("fetch/user", async (data) => {
-  const api = "http://localhost:2000/api-v1/user/new";
+  const api = `${server}/api-v1/user/new`;
   const response = await fetch(api, {
     method: "POST",
     headers: {
@@ -35,7 +35,7 @@ export const fetchLoginUser = createAsyncThunk<
   apiResponse,
   {  email: string;uid: string }
 >("fetch/loginUser", async (data) => {
-  const api = "http://localhost:2000/api-v1/user/login";
+  const api = `${server}/api-v1/user/login`;
   const response = await fetch(api, {
     method: "POST",
     headers: {
@@ -51,7 +51,7 @@ export const fetchLoginUser = createAsyncThunk<
 export const fetchSingleUser = createAsyncThunk<apiResponse, { uid: string }>(
   "fetch/Singleuser",
   async (uid) => {
-    const api = "http://localhost:2000/api-v1/user/isuser";
+    const api = `${server}/api-v1/user/isuser`;
     const response = await fetch(api, {
       method: "POST",
       mode: "cors",

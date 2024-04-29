@@ -9,6 +9,6 @@ const Store = configureStore({
 });
 
 export default Store;
-
+export const server ="https://gemini-clone-backend-dilh.onrender.com";
 export type AppDispatch = typeof Store.dispatch;
 export type RootType = ReturnType<typeof Store.getState>

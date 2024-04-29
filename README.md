@@ -7,7 +7,7 @@ This project is a clone of Gemini using the MERN stack (MongoDB, Express.js, Rea
 
 ## Live Demo
 
-You can access the live demo of this project at [Live Demo](https://your-live-demo-url.com).
+You can access the live demo of this project at [Live Demo](https://gemini-clone-mern.vercel.app/).
 
 ## Features
 

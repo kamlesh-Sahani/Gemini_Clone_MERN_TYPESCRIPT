@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import runChat from "../../config/gemini";
-
+import { server } from "../Strore";
 export interface fetchGeminiResultArgs {
   prompt: string;
 }
@@ -32,7 +32,8 @@ type storeResultRes = {
 export const storeResult = createAsyncThunk<storeResultRes, storeResultArg>(
   "store/iResult",
   async (data) => {
-    const api = "http://localhost:2000/api-v1/result/new";
+    
+    const api = `${server}/api-v1/result/new`;
     const response = await fetch(api, {
       method: "POST",
       headers: {
@@ -60,7 +61,7 @@ type getAllDataRes = {
 export const getAllData = createAsyncThunk<getAllDataRes, { user: string }>(
   "get/All",
   async (user) => {
-    const api = `http://localhost:2000/api-v1/result/all/${user.user}`;
+    const api = `${server}/api-v1/result/all/${user.user}`;
     const response = await fetch(api, {
       method: "GET",
       headers: {
@@ -76,7 +77,7 @@ export const getSingleData = createAsyncThunk<
   { success: boolean; message: string; result: getAllDataType | undefined },
   string
 >("get/singleData", async (id) => {
-  const api = `http://localhost:2000/api-v1/result/${id}`;
+  const api = `${server}/api-v1/result/${id}`;
   const response = await fetch(api, {
     method: "GET",
     headers: {
