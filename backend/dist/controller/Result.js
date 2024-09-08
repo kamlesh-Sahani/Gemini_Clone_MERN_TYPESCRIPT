@@ -49,6 +49,7 @@ export const setData = async (req, res) => {
 export const getData = async (req, res) => {
     try {
         const user = req.params.user;
+        console.log(user);
         const results = await Result.find({ user });
         if (!results) {
             return res.status(400).json({
