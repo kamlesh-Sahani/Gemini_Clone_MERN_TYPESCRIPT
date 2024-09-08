@@ -15,7 +15,7 @@ const App = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     dispatch(fetchSingleUser({ uid: JSON.parse(token!) }));
-  }, [localStorage.getItem("token")]);
+  }, [localStorage.getItem("token"),dispatch]);
   return (
     <Router>
       <Routes>

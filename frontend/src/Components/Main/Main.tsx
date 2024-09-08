@@ -6,7 +6,7 @@ import { MdFlight } from "react-icons/md";
 import { FiSend } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGeminiResult, getResult, storeResult } from "../../Redux/Slice/Reducer";
+import { fetchGeminiResult, getAllData, getResult, storeResult } from "../../Redux/Slice/Reducer";
 import { AppDispatch, RootType } from "../../Redux/Strore";
 import Loader from "../Loader/Loader";
 import { useNavigate } from "react-router-dom";
@@ -30,6 +30,7 @@ const Main = () => {
     setHeading(prompt);
     await dispatch(fetchGeminiResult({ prompt }));
     dispatch(getResult());
+    await dispatch(getAllData({ user: oneUer?.uid! }));
 
     setPrompt("");
   };
@@ -50,12 +51,11 @@ const Main = () => {
 }, [result,showResult]);
 
   return (
-    <>
-      {userLoading ? (
-        <Loader />
-      ) : (
         <div className="main">
-          <div className="main_head">
+          {
+            userLoading ? <Loader /> :
+            <>
+            <div className="main_head">
             <p>Gemini</p>
             <img
               src={oneUer?.photo}
@@ -143,9 +143,11 @@ const Main = () => {
               double-check its responses. Your privacy and Gemini Apps
             </p>
           </div>
-        </div>
-      )}
-    </>
+        
+            </>
+          }
+          </div>
+          
   );
 };
 

@@ -3,7 +3,6 @@ import { FaBars } from "react-icons/fa6";
 import { FiPlus } from "react-icons/fi";
 import { Link,useNavigate } from "react-router-dom";
 import { LuMessageSquare } from "react-icons/lu";
-import { BsThreeDotsVertical } from "react-icons/bs";
 import { IoMdHelpCircleOutline } from "react-icons/io";
 import { IoMdTime } from "react-icons/io";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -18,6 +17,7 @@ const Slider = () => {
   const { loading, allData } = useSelector(
     (state: RootType) => state.geminiSlice
   );
+
   const navigate= useNavigate();
   const dipatch = useDispatch<AppDispatch>();
   const sliderHander = () => {
@@ -36,7 +36,7 @@ const Slider = () => {
   }
   return (
     <>
-      {!loading && (
+      (
         <div
           className="slider"
           style={{ width: sliderClose ? "100px" : "auto" }}
@@ -53,12 +53,11 @@ const Slider = () => {
             <div className="slider_tasks">
               <p>Recent</p>
               <div className="tasks">
-                {allData &&
+                {allData && !loading && 
                   allData?.results?.map((v) => (
                     <Link to={`/${v._id}`} key={v._id}>
                       <LuMessageSquare />
-                      <span>{v.heading}</span>
-                      <BsThreeDotsVertical className="hide" />
+                      <span>{v.heading.slice(0,40)}</span>
                     </Link>
                   ))}
               </div>
@@ -110,7 +109,7 @@ const Slider = () => {
             </div>
           )}
         </div>
-      )}
+      )
     </>
   );
 };

@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import runChat from "../../config/gemini";
-const server="https://gemini-clone-backend-dilh.onrender.com";
+// const server="https://gemini-clone-backend-dilh.onrender.com";
+
+const server=import.meta.env.VITE_SERVER;
 export interface fetchGeminiResultArgs {
   prompt: string;
 }

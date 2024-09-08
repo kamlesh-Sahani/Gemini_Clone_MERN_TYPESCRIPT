@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-const server="https://gemini-clone-backend-dilh.onrender.com";
+const server=import.meta.env.VITE_SERVER;
 export type userType = {
   id: string;
   email: string;

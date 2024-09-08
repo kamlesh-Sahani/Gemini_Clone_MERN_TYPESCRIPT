@@ -88,11 +88,9 @@
 
         &:hover {
           background-color: #e0e0e0;
-          justify-content: space-between;
+         
           transition: all 0.4s;
-          .hide {
-            display: block;
-          }
+        
         }
       }
     }

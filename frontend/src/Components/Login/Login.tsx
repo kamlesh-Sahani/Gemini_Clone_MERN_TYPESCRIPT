@@ -2,40 +2,58 @@ import { FormEvent, useEffect, useState } from "react";
 import "./login.scss";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../Firebase/Firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   fetchLoginUser,
   fetchSingleUser,
   fetchUser,
 } from "../../Redux/Slice/User";
 import { useNavigate } from "react-router-dom";
-import { AppDispatch } from "../../Redux/Strore";
+import { AppDispatch,RootType } from "../../Redux/Strore";
+
 const Login = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const { loading: fetchLoading,user:logUser } = useSelector((state: RootType) => state.fetchUserSlice);
+
   const [email, setEmail] = useState<string>("");
   const [uid, setUid] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [loginLoading, setLoginLoading] = useState<boolean>(false);
+  
   const navigate = useNavigate();
 
-  const loginHandler = async(e: FormEvent<HTMLFormElement>) => {
+  // Login Handler (Manual Login)
+  const loginHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await dispatch(fetchLoginUser({email,uid}));
-    localStorage.setItem("token", JSON.stringify(uid));
-    navigate("/");
+    setLoginLoading(true);
+
+    try {
+      await dispatch(fetchLoginUser({ email, uid }));
+      localStorage.setItem("token", JSON.stringify(uid)); 
+      dispatch(fetchSingleUser({ uid }));
+     
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
+
+    setLoginLoading(false);
   };
 
+  // Google Sign-In Handler
   const googleHandler = async () => {
     try {
       const provider = new GoogleAuthProvider();
       const { user } = await signInWithPopup(auth, provider);
-      const data: { name: string; email: string; photo: string; uid: string } =
-        {
-          name: user.displayName!,
-          email: user.email!,
-          photo: user.photoURL!,
-          uid: user.uid!,
-        };
 
-      const userResponse:any = await dispatch(fetchSingleUser({ uid: user.uid })); 
+      const data = {
+        name: user.displayName!,
+        email: user.email!,
+        photo: user.photoURL!,
+        uid: user.uid!,
+      };
+
+      const userResponse: any = await dispatch(fetchSingleUser({ uid: user.uid }));
+
       if (userResponse?.payload?.success) {
         await dispatch(fetchLoginUser({ email: user.email!, uid: user.uid! }));
       } else {
@@ -45,28 +63,36 @@ const Login = () => {
       localStorage.setItem("token", JSON.stringify(user.uid));
       navigate("/");
     } catch (error) {
-      console.log("google sign up error", error);
+      console.error("Google sign-up error:", error);
     }
   };
- 
 
-  const guestHandler=async()=>{
-    localStorage.setItem("token", JSON.stringify("UHsMPdfHhaMzhwbBaAHzRAvi2453"));
-    await dispatch(fetchLoginUser({ email:"kamleshbca2005@gmail.com", uid:"UHsMPdfHhaMzhwbBaAHzRAvi2453" }));
+  // Guest Login Handler
+  const guestHandler = async () => {
+    setLoading(true);
+    const guestUid = import.meta.env.VITE_GUEST_UID!;
+    localStorage.setItem("token", JSON.stringify(guestUid));
+  
+    await dispatch(fetchLoginUser({ email: import.meta.env.VITE_GUEST_EMAIL!, uid: guestUid }));
     navigate("/");
-  }
-  useEffect(()=>{
-    if(localStorage.getItem('token')!==null){
+    setLoading(false);
+  };
+
+  // Auto-Redirect if Already Logged In
+  useEffect(() => {
+    if(logUser && logUser.email){
       navigate("/");
     }
-   
-    },[localStorage.getItem('token')])
+  }, [navigate,dispatch,fetchLoading]);
+
   return (
     <div className="login">
       <div className="titleAndICon">
         <img src="geminiIcon.jpg" alt="gemini" />
         <h3>Login in Gemini Clone</h3>
       </div>
+
+
       <form onSubmit={loginHandler}>
         <label>
           <p>Email</p>
@@ -75,26 +101,45 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            disabled={loginLoading || loading}
           />
         </label>
 
         <label>
-          <p>Uid</p>
+          <p>UID</p>
           <input
-            type="password"
+            type="text"
             value={uid}
             onChange={(e) => setUid(e.target.value)}
             required
+            disabled={loginLoading || loading}
           />
         </label>
-        <input type="submit" value={"Login"} />
-        <button className="googleBtn" type="button" onClick={googleHandler}>
-          <img src="google.webp" alt="google" />
-          <p>Login With Google</p>
 
-         
+        <input
+          type="submit"
+          value={loginLoading ? "Loading..." : "Login"}
+          disabled={loginLoading || loading}
+        />
+        
+        <button
+          className="googleBtn"
+          type="button"
+          onClick={googleHandler}
+          disabled={loginLoading || loading}
+        >
+          <img src="google.webp" alt="Google" />
+          <p>Login With Google</p>
         </button>
-        <button type="button" onClick={guestHandler} className="guest">Guest</button>
+
+        <button
+          type="button"
+          onClick={guestHandler}
+          className="guest"
+          disabled={loading || loginLoading}
+        >
+          {loading ? "Loading..." : "Guest"}
+        </button>
       </form>
     </div>
   );
