@@ -34,82 +34,48 @@ const Slider = () => {
   const homeHandler = ()=>{
     navigate('/');
   }
+
+
   return (
     <>
-      (
-        <div
-          className="slider"
-          style={{ width: sliderClose ? "100px" : "auto" }}
-        >
-          <div className="slider_head">
-            <FaBars onClick={sliderHander} />
-            <button style={{ width: sliderClose ? "50px" : "auto" }} onClick={homeHandler}>
-              <FiPlus />{" "}
-              {!sliderClose ? <span className="text_btn">New Chat</span> : ""}
-            </button>
+    <FaBars className="sideIcon" onClick={sliderHander} />
+      {
+        !sliderClose && <div
+        className="slider"
+      >
+        <div onClick={homeHandler} className="new_chat_btn">
+          <p>New Chat</p>
+            <FiPlus />
           </div>
 
-          {!sliderClose ? (
-            <div className="slider_tasks">
-              <p>Recent</p>
-              <div className="tasks">
-                {allData && !loading && 
-                  allData?.results?.map((v) => (
-                    <Link to={`/${v._id}`} key={v._id}>
-                      <LuMessageSquare />
-                      <span>{v.heading.slice(0,40)}</span>
-                    </Link>
-                  ))}
-              </div>
+      
+         
+          <div className="slider_tasks">
+          <p>Recent</p>
+            <div className="tasks">
+              {allData && !loading && 
+                allData?.results?.map((v) => (
+                  <Link to={`/${v._id}`} key={v._id}>
+                    <LuMessageSquare />
+                    <span>{v.heading.slice(0,40)}</span>
+                  </Link>
+                ))}
             </div>
-          ) : (
-            ""
-          )}
-          {!sliderClose ? (
-            <div className="slider_bottom">
-              <ul>
-                <li>
-                  <IoMdHelpCircleOutline />
-                  <p>Help</p>{" "}
-                </li>
-                <li>
-                  <IoMdTime />
-                  <p>Activity</p>{" "}
-                </li>
-                <li>
-                  <IoSettingsOutline />
-                  <p>Setting</p>{" "}
-                </li>
-              </ul>
-              <button>
-                <FaStar />
-                <p> Upgrade to Gemini Advance</p>{" "}
-              </button>
-              <p className="para">New Delhi, Delhi, India </p>
-              <span className="active">
-                From your IP address • Update location
-              </span>
-            </div>
-          ) : (
-            <div className="sliderActive">
-              <ul>
-                <li>
-                  {" "}
-                  <IoMdHelpCircleOutline />
-                </li>
-                <li>
-                  {" "}
-                  <IoMdTime />
-                </li>
-                <li>
-                  {" "}
-                  <IoSettingsOutline />
-                </li>
-              </ul>
-            </div>
-          )}
-        </div>
-      )
+          </div>
+      
+       
+          <div className="slider_bottom">
+            <button>
+              <FaStar />
+              <p> Upgrade to Gemini Advance</p>{" "}
+            </button>
+           
+          </div>
+        
+      </div>
+      }
+       
+      
     </>
   );
 };

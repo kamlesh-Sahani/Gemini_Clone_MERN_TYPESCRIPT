@@ -22,12 +22,12 @@ const App = () => {
         <Route
           path="/"
           element={
-            oneUer ? (
+            oneUer ? 
               <div className="app">
                 <Slider />
                 <Main />
               </div>
-            ) : (
+             : (
               <LoginPage />
             )
           }

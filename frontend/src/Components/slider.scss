@@ -1,60 +1,38 @@
 .slider {
-  display: grid;
-  grid-template-rows: 0.5fr 2.3fr 1.5fr;
-  gap: 20px;
+ display: flex;
+ flex-direction: column;
+ gap: 40px;
   background-color: #f0f4f9;
   height: 100vh;
-  padding: 20px 20px 0px 20px;
+  padding: 77px 20px 10px 20px;
+  position:absolute;
+  z-index: 10;
+  width: 300px;
 
-  .slider_head {
+  .new_chat_btn{
+    padding: 10px;
+    background-color: #eee;
+    height: 40px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
     display: flex;
-    flex-direction: column;
-    gap: 90px;
-    svg {
-      font-size: 27px;
-      cursor: pointer;
-      transition: all 0.4;
-      &:hover {
-        color: #8a8a8a;
-        transition: all 0.4;
-      }
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    svg{
+      font-size: 30px;
     }
-
-    button {
-      height: 50px;
-      width: 150px;
-      border-radius: 50px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      align-items: center;
-      cursor: pointer;
-      outline: none;
-      border: none;
-      background-color: #e5ebf2;
-      color: #a5a5a5;
-      span {
-        font-size: 17px;
-      }
-      transition: all 0.4;
-      &:hover {
-        opacity: 0.7;
-        transition: all 0.4;
-      }
-    }
-    @media screen and (max-width:500px) {
-      svg{
-        display: none;
-      }
-    }
-
+    cursor: pointer;
   }
 
   .slider_tasks {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 6px;
     overflow-y: auto;
+
     p {
       font-weight: 500;
     }

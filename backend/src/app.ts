@@ -3,6 +3,7 @@ import resultRouter from './routes/Result.js';
 import userRouter from './routes/User.js'
 import { connectDB } from './utils/DB.js';
 import cors from 'cors';
+import 'dotenv/config'
 const app = express();
 const port = 2000;
 

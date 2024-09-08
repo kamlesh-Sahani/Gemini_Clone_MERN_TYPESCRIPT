@@ -2,6 +2,7 @@ import express from 'express';
 import resultRouter from './routes/Result.js';
 import userRouter from './routes/User.js';
 import { connectDB } from './utils/DB.js';
+import 'dotenv/config'
 import cors from 'cors';
 const app = express();
 const port = 2000;

@@ -6,7 +6,7 @@
 .app{
     display: flex;
     text-transform: capitalize;
-
+    height: 100vh;
 }
 
 .heading{
@@ -30,4 +30,17 @@ pre{
         background-color: #fff;
         color: #000;
     }
+}
+
+.sideIcon{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #eee;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    padding: 10px;
+    z-index: 20;
+    cursor: pointer;
 }
