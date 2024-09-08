@@ -59,8 +59,13 @@ To run this project locally, follow these steps:
 5. Start the backend server: `nodemon dist/app.js`  for development mode.
 6. Start the frontend development server: `npm start` in the frontend directory.
 
-## Contributing
+![Screenshot from 2024-09-08 23-40-57](https://github.com/user-attachments/assets/e0568408-ee98-4410-918b-4d9977b932f6)
+![Screenshot from 2024-09-08 23-40-43](https://github.com/user-attachments/assets/cce959d5-2295-48e9-a365-96dc1212ce94)
+![Screenshot from 2024-09-08 23-40-00](https://github.com/user-attachments/assets/233c3dff-c3c5-40d2-953a-56fa9543862f)
+![Screenshot from 2024-09-08 23-39-52](https://github.com/user-attachments/assets/5d8e2f6b-a45a-4d03-b3ed-14654ed79b0b)
+![Screenshot from 2024-09-08 23-39-25](https://github.com/user-attachments/assets/d962bae5-1b42-4281-bf1b-253f91cb2dca)
 
+## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request.
 
 ## License
