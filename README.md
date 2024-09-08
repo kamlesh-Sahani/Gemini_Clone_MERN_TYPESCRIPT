@@ -1,6 +1,3 @@
-
----
-
 # Gemini Clone
 
 This project is a clone of Gemini using the MERN stack (MongoDB, Express.js, React.js, Node.js).
@@ -65,11 +62,7 @@ To run this project locally, follow these steps:
 ![Screenshot from 2024-09-08 23-39-52](https://github.com/user-attachments/assets/5d8e2f6b-a45a-4d03-b3ed-14654ed79b0b)
 ![Screenshot from 2024-09-08 23-39-25](https://github.com/user-attachments/assets/d962bae5-1b42-4281-bf1b-253f91cb2dca)
 
-## Contributing
-Contributions are welcome! Please fork the repository and submit a pull request.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
